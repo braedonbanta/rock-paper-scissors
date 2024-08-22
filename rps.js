@@ -57,22 +57,75 @@ function playRound(humanChoice, computerChoice) {
 }
 }
 
-function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
+const rockButton = document.querySelector(".rock");
+const paperButton = document.querySelector(".paper");
+const scissorsButton = document.querySelector(".scissors");
+const humanScoreboard = document.querySelector(".human");
+const computerScoreboard = document.querySelector(".computer");
 
-    for (let i = 0; i < 5; i++) {
-        const humanChoice = getHumanChoice();
-        const computerChoice = getComputerChoice();
-        winner = playRound(humanChoice, computerChoice);
-        if (winner == "human") {
-            humanScore++
-        } else if (winner = "computer") {
-            computerScore++
+rockButton.addEventListener("click", function() {
+    computerChoice = getComputerChoice();
+    let roundResult = playRound("rock", computerChoice);
+    if (roundResult == "human") {
+        let currentScore = humanScoreboard.textContent.split(' ');
+        currentScore = Number(currentScore[1]);
+        currentScore++
+        humanScoreboard.textContent = `Human: ${String(currentScore)}`;
+        if (currentScore == 5) {
+            alert("You win!");
         }
-        console.log("Human score:", humanScore);
-        console.log("Computer score:", computerScore);
+    } else if (roundResult == "computer") {
+        let currentScore = computerScoreboard.textContent.split(' ');
+        currentScore = Number(currentScore[1]);
+        currentScore++
+        computerScoreboard.textContent = `Computer: ${String(currentScore)}`;
+        if (currentScore == 5) {
+            alert("You lost!");
+        }
     }
-}
+});
 
-playGame();
+paperButton.addEventListener("click", function() {
+    computerChoice = getComputerChoice();
+    let roundResult = playRound("paper", computerChoice);
+    if (roundResult == "human") {
+        let currentScore = humanScoreboard.textContent.split(' ');
+        currentScore = Number(currentScore[1]);
+        currentScore++
+        humanScoreboard.textContent = `Human: ${String(currentScore)}`;
+        if (currentScore == 5) {
+            alert("You win!");
+        }
+    } else if (roundResult == "computer") {
+        let currentScore = computerScoreboard.textContent.split(' ');
+        currentScore = Number(currentScore[1]);
+        currentScore++
+        computerScoreboard.textContent = `Computer: ${String(currentScore)}`;
+        if (currentScore == 5) {
+            alert("You lost!");
+        }
+    }
+});
+
+
+scissorsButton.addEventListener("click", function() {
+    computerChoice = getComputerChoice();
+    let roundResult = playRound("scissors", computerChoice);
+    if (roundResult == "human") {
+        let currentScore = humanScoreboard.textContent.split(' ');
+        currentScore = Number(currentScore[1]);
+        currentScore++
+        humanScoreboard.textContent = `Human: ${String(currentScore)}`;
+        if (currentScore == 5) {
+            alert("You win!");
+        }
+    } else if (roundResult == "computer") {
+        let currentScore = computerScoreboard.textContent.split(' ');
+        currentScore = Number(currentScore[1]);
+        currentScore++
+        computerScoreboard.textContent = `Computer: ${String(currentScore)}`;
+        if (currentScore == 5) {
+            alert("You lost!");
+        }
+    }
+});
